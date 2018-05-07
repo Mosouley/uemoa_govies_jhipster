@@ -1,0 +1,25 @@
+
+{
+    "jhispterApp": {
+        "goviesType" : {
+            "home": {
+                "title": "Govies Types",
+                "createLabel": "Create a new Govies Type",
+                "createOrEditLabel": "Create or edit a Govies Type"
+            },
+            "created": "A new Govies Type is created with identifier {{ param }}",
+            "updated": "A Govies Type is updated with identifier {{ param }}",
+            "deleted": "A Govies Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Govies Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Govies Type"
+            },
+            "fullName": "Full Name",
+            "shortName": "Short Name",
+            "conventionBase": "Convention Base",
+            "issue": "Issue"
+        }
+    }
+}

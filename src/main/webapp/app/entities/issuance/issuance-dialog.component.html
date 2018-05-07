@@ -1,0 +1,193 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myIssuanceLabel" jhiTranslate="jhispterApp.issuance.home.createOrEditLabel">Create or edit a Issuance</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!issuance.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="issuance.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.codeIsin" for="field_codeIsin">Code Isin</label>
+            <input type="text" class="form-control" name="codeIsin" id="field_codeIsin"
+                [(ngModel)]="issuance.codeIsin" required/>
+            <div [hidden]="!(editForm.controls.codeIsin?.dirty && editForm.controls.codeIsin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.codeIsin?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.issueDate" for="field_issueDate">Issue Date</label>
+            <div class="input-group">
+                <input id="field_issueDate" type="text" class="form-control" name="issueDate" ngbDatepicker  #issueDateDp="ngbDatepicker" [(ngModel)]="issuance.issueDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="issueDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.issueDate?.dirty && editForm.controls.issueDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.issueDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.issueReference" for="field_issueReference">Issue Reference</label>
+            <input type="text" class="form-control" name="issueReference" id="field_issueReference"
+                [(ngModel)]="issuance.issueReference" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.issueDescription" for="field_issueDescription">Issue Description</label>
+            <input type="text" class="form-control" name="issueDescription" id="field_issueDescription"
+                [(ngModel)]="issuance.issueDescription" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.issueTranche" for="field_issueTranche">Issue Tranche</label>
+            <input type="text" class="form-control" name="issueTranche" id="field_issueTranche"
+                [(ngModel)]="issuance.issueTranche" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.nominalValue" for="field_nominalValue">Nominal Value</label>
+            <input type="number" class="form-control" name="nominalValue" id="field_nominalValue"
+                [(ngModel)]="issuance.nominalValue" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.averageRate" for="field_averageRate">Average Rate</label>
+            <input type="number" class="form-control" name="averageRate" id="field_averageRate"
+                [(ngModel)]="issuance.averageRate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.couponRate" for="field_couponRate">Coupon Rate</label>
+            <input type="number" class="form-control" name="couponRate" id="field_couponRate"
+                [(ngModel)]="issuance.couponRate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.marginalRate" for="field_marginalRate">Marginal Rate</label>
+            <input type="number" class="form-control" name="marginalRate" id="field_marginalRate"
+                [(ngModel)]="issuance.marginalRate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.valueDate" for="field_valueDate">Value Date</label>
+            <div class="input-group">
+                <input id="field_valueDate" type="text" class="form-control" name="valueDate" ngbDatepicker  #valueDateDp="ngbDatepicker" [(ngModel)]="issuance.valueDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="valueDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.valueDate?.dirty && editForm.controls.valueDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.valueDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.maturityDate" for="field_maturityDate">Maturity Date</label>
+            <div class="input-group">
+                <input id="field_maturityDate" type="text" class="form-control" name="maturityDate" ngbDatepicker  #maturityDateDp="ngbDatepicker" [(ngModel)]="issuance.maturityDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="maturityDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.maturityDate?.dirty && editForm.controls.maturityDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.maturityDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.interestPeriod" for="field_interestPeriod">Interest Period</label>
+            <select class="form-control" name="interestPeriod" [(ngModel)]="issuance.interestPeriod" id="field_interestPeriod" >
+                <option value="ANNUAL">{{'jhispterApp.FrequenceCalcul.ANNUAL' | translate}}</option>
+                <option value="SEMIANNUAL">{{'jhispterApp.FrequenceCalcul.SEMIANNUAL' | translate}}</option>
+                <option value="QUATERLY">{{'jhispterApp.FrequenceCalcul.QUATERLY' | translate}}</option>
+                <option value="MONTHLY">{{'jhispterApp.FrequenceCalcul.MONTHLY' | translate}}</option>
+                <option value="INFINE">{{'jhispterApp.FrequenceCalcul.INFINE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.repayPeriod" for="field_repayPeriod">Repay Period</label>
+            <select class="form-control" name="repayPeriod" [(ngModel)]="issuance.repayPeriod" id="field_repayPeriod" >
+                <option value="ANNUAL">{{'jhispterApp.FrequenceCalcul.ANNUAL' | translate}}</option>
+                <option value="SEMIANNUAL">{{'jhispterApp.FrequenceCalcul.SEMIANNUAL' | translate}}</option>
+                <option value="QUATERLY">{{'jhispterApp.FrequenceCalcul.QUATERLY' | translate}}</option>
+                <option value="MONTHLY">{{'jhispterApp.FrequenceCalcul.MONTHLY' | translate}}</option>
+                <option value="INFINE">{{'jhispterApp.FrequenceCalcul.INFINE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.repayMode" for="field_repayMode">Repay Mode</label>
+            <select class="form-control" name="repayMode" [(ngModel)]="issuance.repayMode" id="field_repayMode" >
+                <option value="AMORTCONST">{{'jhispterApp.GoviesRepayMode.AMORTCONST' | translate}}</option>
+                <option value="ANNUITCONST">{{'jhispterApp.GoviesRepayMode.ANNUITCONST' | translate}}</option>
+                <option value="INFINE">{{'jhispterApp.GoviesRepayMode.INFINE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.gracePeriod" for="field_gracePeriod">Grace Period</label>
+            <input type="number" class="form-control" name="gracePeriod" id="field_gracePeriod"
+                [(ngModel)]="issuance.gracePeriod" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.bidAmount" for="field_bidAmount">Bid Amount</label>
+            <input type="number" class="form-control" name="bidAmount" id="field_bidAmount"
+                [(ngModel)]="issuance.bidAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.getAmount" for="field_getAmount">Get Amount</label>
+            <input type="number" class="form-control" name="getAmount" id="field_getAmount"
+                [(ngModel)]="issuance.getAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.offeredAmount" for="field_offeredAmount">Offered Amount</label>
+            <input type="number" class="form-control" name="offeredAmount" id="field_offeredAmount"
+                [(ngModel)]="issuance.offeredAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.offeredONC" for="field_offeredONC">Offered ONC</label>
+            <input type="number" class="form-control" name="offeredONC" id="field_offeredONC"
+                [(ngModel)]="issuance.offeredONC" />
+        </div>
+        <div class="custom-file">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.minutesIssuance" for="field_minutesIssuance">Minutes Issuance</label>
+            <input type="file" class="custom-file-input" name="minutesIssuance" id="field_minutesIssuance"
+                [(ngModel)]="issuance.minutesIssuance" />
+            <!--<input class="custom-file-input" id="customFile" type="file">-->
+            <label class="custom-file-label" for="field_minutesIssuance">Choose file</label>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.issuer" for="field_issuer">Issuer</label>
+            <select class="form-control" id="field_issuer" name="issuer" [(ngModel)]="issuance.issuer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="issuerOption.id === issuance.issuer?.id ? issuance.issuer : issuerOption" *ngFor="let issuerOption of issuers; trackBy: trackIssuerById">{{issuerOption.shortName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.issuance.type" for="field_type">Type</label>
+            <select class="form-control" id="field_type" name="type" [(ngModel)]="issuance.type" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="goviesTypeOption.id === issuance.type?.id ? issuance.type : goviesTypeOption" *ngFor="let goviesTypeOption of goviestypes; trackBy: trackGoviesTypeById">{{goviesTypeOption.shortName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

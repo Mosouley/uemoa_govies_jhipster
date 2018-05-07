@@ -1,0 +1,10 @@
+{
+    "jhispterApp": {
+        "GoviesRepayMode" : {
+            "null": "",
+            "AMORTCONST": "AMORTCONST",
+            "ANNUITCONST": "ANNUITCONST",
+            "INFINE": "INFINE"
+        }
+    }
+}

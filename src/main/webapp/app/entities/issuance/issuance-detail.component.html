@@ -1,0 +1,114 @@
+
+<div *ngIf="issuance">
+    <h2><span jhiTranslate="jhispterApp.issuance.detail.title">Issuance</span> {{issuance.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhispterApp.issuance.codeIsin">Code Isin</span></dt>
+        <dd>
+            <span>{{issuance.codeIsin}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.issueDate">Issue Date</span></dt>
+        <dd>
+            <span>{{issuance.issueDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.issueReference">Issue Reference</span></dt>
+        <dd>
+            <span>{{issuance.issueReference}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.issueDescription">Issue Description</span></dt>
+        <dd>
+            <span>{{issuance.issueDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.issueTranche">Issue Tranche</span></dt>
+        <dd>
+            <span>{{issuance.issueTranche}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.nominalValue">Nominal Value</span></dt>
+        <dd>
+            <span>{{issuance.nominalValue}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.averageRate">Average Rate</span></dt>
+        <dd>
+            <span>{{issuance.averageRate}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.couponRate">Coupon Rate</span></dt>
+        <dd>
+            <span>{{issuance.couponRate}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.marginalRate">Marginal Rate</span></dt>
+        <dd>
+            <span>{{issuance.marginalRate}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.valueDate">Value Date</span></dt>
+        <dd>
+            <span>{{issuance.valueDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.maturityDate">Maturity Date</span></dt>
+        <dd>
+            <span>{{issuance.maturityDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.interestPeriod">Interest Period</span></dt>
+        <dd>
+            <span jhiTranslate="{{'jhispterApp.FrequenceCalcul.' + issuance.interestPeriod}}">{{issuance.interestPeriod}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.repayPeriod">Repay Period</span></dt>
+        <dd>
+            <span jhiTranslate="{{'jhispterApp.FrequenceCalcul.' + issuance.repayPeriod}}">{{issuance.repayPeriod}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.repayMode">Repay Mode</span></dt>
+        <dd>
+            <span jhiTranslate="{{'jhispterApp.GoviesRepayMode.' + issuance.repayMode}}">{{issuance.repayMode}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.gracePeriod">Grace Period</span></dt>
+        <dd>
+            <span>{{issuance.gracePeriod}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.bidAmount">Bid Amount</span></dt>
+        <dd>
+            <span>{{issuance.bidAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.getAmount">Get Amount</span></dt>
+        <dd>
+            <span>{{issuance.getAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.offeredAmount">Offered Amount</span></dt>
+        <dd>
+            <span>{{issuance.offeredAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.offeredONC">Offered ONC</span></dt>
+        <dd>
+            <span>{{issuance.offeredONC}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.minutesIssuance">Minutes Issuance</span></dt>
+        <dd>
+            <span>{{issuance.minutesIssuance}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.issuer">Issuer</span></dt>
+        <dd>
+            <div *ngIf="issuance.issuer">
+                <a [routerLink]="['/issuer', issuance.issuer?.id]">{{issuance.issuer?.shortName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuance.type">Type</span></dt>
+        <dd>
+            <div *ngIf="issuance.type">
+                <a [routerLink]="['/govies-type', issuance.type?.id]">{{issuance.type?.shortName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'issuance/'+ issuance.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

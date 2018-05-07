@@ -1,0 +1,108 @@
+<div>
+    <h2>
+        <span jhiTranslate="jhispterApp.issuance.home.title">Issuances</span>
+        <button class="btn btn-primary float-right jh-create-entity create-issuance" [routerLink]="['/', { outlets: { popup: ['issuance-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="jhispterApp.issuance.home.createLabel">
+            Create new Issuance
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="issuances">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="codeIsin"><span jhiTranslate="jhispterApp.issuance.codeIsin">Code Isin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issueDate"><span jhiTranslate="jhispterApp.issuance.issueDate">Issue Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issueReference"><span jhiTranslate="jhispterApp.issuance.issueReference">Issue Reference</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issueDescription"><span jhiTranslate="jhispterApp.issuance.issueDescription">Issue Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issueTranche"><span jhiTranslate="jhispterApp.issuance.issueTranche">Issue Tranche</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nominalValue"><span jhiTranslate="jhispterApp.issuance.nominalValue">Nominal Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="averageRate"><span jhiTranslate="jhispterApp.issuance.averageRate">Average Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="couponRate"><span jhiTranslate="jhispterApp.issuance.couponRate">Coupon Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="marginalRate"><span jhiTranslate="jhispterApp.issuance.marginalRate">Marginal Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valueDate"><span jhiTranslate="jhispterApp.issuance.valueDate">Value Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maturityDate"><span jhiTranslate="jhispterApp.issuance.maturityDate">Maturity Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="interestPeriod"><span jhiTranslate="jhispterApp.issuance.interestPeriod">Interest Period</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="repayPeriod"><span jhiTranslate="jhispterApp.issuance.repayPeriod">Repay Period</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="repayMode"><span jhiTranslate="jhispterApp.issuance.repayMode">Repay Mode</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gracePeriod"><span jhiTranslate="jhispterApp.issuance.gracePeriod">Grace Period</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bidAmount"><span jhiTranslate="jhispterApp.issuance.bidAmount">Bid Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="getAmount"><span jhiTranslate="jhispterApp.issuance.getAmount">Get Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="offeredAmount"><span jhiTranslate="jhispterApp.issuance.offeredAmount">Offered Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="offeredONC"><span jhiTranslate="jhispterApp.issuance.offeredONC">Offered ONC</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="minutesIssuance"><span jhiTranslate="jhispterApp.issuance.minutesIssuance">Minutes Issuance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issuer.shortName"><span jhiTranslate="jhispterApp.issuance.issuer">Issuer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type.shortName"><span jhiTranslate="jhispterApp.issuance.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let issuance of issuances ;trackBy: trackId">
+                <td><a [routerLink]="['../issuance', issuance.id ]">{{issuance.id}}</a></td>
+                <td>{{issuance.codeIsin}}</td>
+                <td>{{issuance.issueDate | date:'mediumDate'}}</td>
+                <td>{{issuance.issueReference}}</td>
+                <td>{{issuance.issueDescription}}</td>
+                <td>{{issuance.issueTranche}}</td>
+                <td>{{issuance.nominalValue}}</td>
+                <td>{{issuance.averageRate}}</td>
+                <td>{{issuance.couponRate}}</td>
+                <td>{{issuance.marginalRate}}</td>
+                <td>{{issuance.valueDate | date:'mediumDate'}}</td>
+                <td>{{issuance.maturityDate | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'jhispterApp.FrequenceCalcul.' + issuance.interestPeriod}}">{{issuance.interestPeriod}}</td>
+                <td jhiTranslate="{{'jhispterApp.FrequenceCalcul.' + issuance.repayPeriod}}">{{issuance.repayPeriod}}</td>
+                <td jhiTranslate="{{'jhispterApp.GoviesRepayMode.' + issuance.repayMode}}">{{issuance.repayMode}}</td>
+                <td>{{issuance.gracePeriod}}</td>
+                <td>{{issuance.bidAmount}}</td>
+                <td>{{issuance.getAmount}}</td>
+                <td>{{issuance.offeredAmount}}</td>
+                <td>{{issuance.offeredONC}}</td>
+                <td>{{issuance.minutesIssuance}}</td>
+                <td>
+                    <div *ngIf="issuance.issuer">
+                        <a [routerLink]="['../issuer', issuance.issuer?.id ]" >{{issuance.issuer?.shortName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="issuance.type">
+                        <a [routerLink]="['../govies-type', issuance.type?.id ]" >{{issuance.type?.shortName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../issuance', issuance.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'issuance/'+ issuance.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'issuance/'+ issuance.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myGoviesTypeLabel" jhiTranslate="jhispterApp.goviesType.home.createOrEditLabel">Create or edit a Govies Type</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!goviesType.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="goviesType.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.goviesType.fullName" for="field_fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="field_fullName"
+                [(ngModel)]="goviesType.fullName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.goviesType.shortName" for="field_shortName">Short Name</label>
+            <input type="text" class="form-control" name="shortName" id="field_shortName"
+                [(ngModel)]="goviesType.shortName" required/>
+            <div [hidden]="!(editForm.controls.shortName?.dirty && editForm.controls.shortName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shortName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhispterApp.goviesType.conventionBase" for="field_conventionBase">Convention Base</label>
+            <select class="form-control" name="conventionBase" [(ngModel)]="goviesType.conventionBase" id="field_conventionBase" >
+                <option value="REEL_30">{{'jhispterApp.ConventionBase.REEL_30' | translate}}</option>
+                <option value="REEL_365">{{'jhispterApp.ConventionBase.REEL_365' | translate}}</option>
+                <option value="TRENTE_REEL">{{'jhispterApp.ConventionBase.TRENTE_REEL' | translate}}</option>
+                <option value="REEL_REEL">{{'jhispterApp.ConventionBase.REEL_REEL' | translate}}</option>
+                <option value="REEL_364">{{'jhispterApp.ConventionBase.REEL_364' | translate}}</option>
+                <option value="REEL_360">{{'jhispterApp.ConventionBase.REEL_360' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

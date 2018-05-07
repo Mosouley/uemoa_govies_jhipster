@@ -1,0 +1,109 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "minutesIssuance",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nominalValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "averageRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "couponRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "bidAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "getAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "offeredAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "offeredONC",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "codeIsin",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "gracePeriod",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "issueDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "issueReference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "issueDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "issueTranche",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marginalRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "maturityDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "valueDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "goviesType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "issuer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "interestPeriod",
+            "fieldType": "FrequenceCalcul",
+            "fieldValues": "    INFINE,ANNUAL,SEMIANNUAL,QUARTELY,MONTHLY,PRECOMPTE"
+        },
+        {
+            "fieldName": "repayPeriod",
+            "fieldType": "FrequenceCalcul",
+            "fieldValues": ""
+        },
+        {
+            "fieldName": "repayMode",
+            "fieldType": "GoviesRepayMode",
+            "fieldValues": "AMORTCONSTANT,ANNUITCONSTANT,INFINE"
+        }
+    ],
+    "changelogDate": "20180426140006",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "goviesissue",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

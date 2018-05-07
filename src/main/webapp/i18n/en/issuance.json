@@ -1,0 +1,43 @@
+
+{
+    "jhispterApp": {
+        "issuance" : {
+            "home": {
+                "title": "Issuances",
+                "createLabel": "Create a new Issuance",
+                "createOrEditLabel": "Create or edit a Issuance"
+            },
+            "created": "A new Issuance is created with identifier {{ param }}",
+            "updated": "A Issuance is updated with identifier {{ param }}",
+            "deleted": "A Issuance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Issuance {{ id }}?"
+            },
+            "detail": {
+                "title": "Issuance"
+            },
+            "codeIsin": "Code Isin",
+            "issueDate": "Issue Date",
+            "issueReference": "Issue Reference",
+            "issueDescription": "Issue Description",
+            "issueTranche": "Issue Tranche",
+            "nominalValue": "Nominal Value",
+            "averageRate": "Average Rate",
+            "couponRate": "Coupon Rate",
+            "marginalRate": "Marginal Rate",
+            "valueDate": "Value Date",
+            "maturityDate": "Maturity Date",
+            "interestPeriod": "Interest Period",
+            "repayPeriod": "Repay Period",
+            "repayMode": "Repay Mode",
+            "gracePeriod": "Grace Period",
+            "bidAmount": "Bid Amount",
+            "getAmount": "Get Amount",
+            "offeredAmount": "Offered Amount",
+            "offeredONC": "Offered ONC",
+            "minutesIssuance": "Minutes Issuance",
+            "issuer": "Issuer",
+            "type": "Type"
+        }
+    }
+}

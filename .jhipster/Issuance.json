@@ -1,0 +1,120 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "issuer",
+            "otherEntityName": "issuer",
+            "otherEntityField": "shortName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "goviesType",
+            "otherEntityField": "shortName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codeIsin",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "issueDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "issueReference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "issueDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "issueTranche",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nominalValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "averageRate",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "couponRate",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "marginalRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "valueDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "maturityDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "interestPeriod",
+            "fieldType": "FrequenceCalcul",
+            "fieldValues": "ANNUAL,SEMIANNUAL,QUATERLY,MONTHLY,INFINE"
+        },
+        {
+            "fieldName": "repayPeriod",
+            "fieldType": "FrequenceCalcul",
+            "fieldValues": "ANNUAL,SEMIANNUAL,QUATERLY,MONTHLY,INFINE"
+        },
+        {
+            "fieldName": "repayMode",
+            "fieldType": "GoviesRepayMode",
+            "fieldValues": "AMORTCONST,ANNUITCONST,INFINE"
+        },
+        {
+            "fieldName": "gracePeriod",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "bidAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "getAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "offeredAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "offeredONC",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "minutesIssuance",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180428051700",
+    "entityTableName": "issuance",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

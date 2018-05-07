@@ -1,0 +1,12 @@
+{
+    "jhispterApp": {
+        "FrequenceCalcul" : {
+            "null": "",
+            "ANNUAL": "ANNUAL",
+            "SEMIANNUAL": "SEMIANNUAL",
+            "QUATERLY": "QUATERLY",
+            "MONTHLY": "MONTHLY",
+            "INFINE": "INFINE"
+        }
+    }
+}

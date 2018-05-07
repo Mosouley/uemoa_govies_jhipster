@@ -1,0 +1,13 @@
+{
+    "jhispterApp": {
+        "ConventionBase" : {
+            "null": "",
+            "REEL_30": "REEL_30",
+            "REEL_365": "REEL_365",
+            "TRENTE_REEL": "TRENTE_REEL",
+            "REEL_REEL": "REEL_REEL",
+            "REEL_364": "REEL_364",
+            "REEL_360": "REEL_360"
+        }
+    }
+}

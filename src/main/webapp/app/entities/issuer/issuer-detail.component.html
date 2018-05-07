@@ -1,0 +1,34 @@
+
+<div *ngIf="issuer">
+    <h2><span jhiTranslate="jhispterApp.issuer.detail.title">Issuer</span> {{issuer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhispterApp.issuer.flagUrl">Flag Url</span></dt>
+        <dd>
+            <span>{{issuer.flagUrl}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuer.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{issuer.fullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhispterApp.issuer.shortName">Short Name</span></dt>
+        <dd>
+            <span>{{issuer.shortName}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'issuer/'+ issuer.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
